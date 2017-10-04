@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "windows.h"
 #include "M_func.h";
@@ -37,3 +38,4 @@ int main()
 	system("pause");
 	return 0;
 }
+
