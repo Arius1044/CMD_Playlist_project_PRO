@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 
+
 using namespace std;
 
 void music_list(char* buffer)
@@ -62,6 +63,10 @@ void folder_list(char* buffer)
 	cout << endl;
 }
 
+
+
+
+
 void cd(char* buffer)
 {
 	int count = 0;
@@ -112,3 +117,4 @@ void help()
 	f.close();
 	cout << endl;
 }
+
