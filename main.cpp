@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "windows.h"
 #include "M_func.h";
@@ -30,7 +29,8 @@ int main()
 		if (comands[0] == "--m")
 		{
 			if (comands[1] == "music_list") music_list(buffer);
-			else if (comands[1] == "folders_list") folders_list();
+			else if (comands[1] == "folder_list") folder_list(buffer);
+			else if (comands[1] == "cd") cd(buffer);
 		}
 
 	}
@@ -38,4 +38,3 @@ int main()
 	system("pause");
 	return 0;
 }
-

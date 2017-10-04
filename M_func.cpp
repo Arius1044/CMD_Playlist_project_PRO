@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <string>
 #include <iostream>
+
 using namespace std;
 
 void music_list(char* buffer)
@@ -57,3 +58,25 @@ void folder_list(char* buffer)
 	}
 	delete[] c_buffer;
 }
+
+
+void cd(char* buffer)
+{
+	int count = 0;
+	string nbuffer;
+	int size = strlen(buffer);
+	for (int i = size; i > 0; i--)
+	{
+		count++;
+		if (buffer[i] == '\\') 
+		{
+			if (buffer[i - 1] == ':') count--;
+			for (int j = 0; j <size - count + 1; j++) nbuffer+=buffer[j];
+			break;
+	    }
+	}
+
+	SetCurrentDirectory(nbuffer.c_str());
+	cout << endl;
+}
+
