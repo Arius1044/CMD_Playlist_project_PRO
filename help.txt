@@ -1,5 +1,5 @@
----list folder - displays the contents of the folders in the folder ;
----selec folder -  enters the folder ;
----cd - go back ;
----scan_on_music - prints a mp3 list ;
----create playlist - launches the method of creating an object (playlist) ;
+--- --m folder_list - displays the contents of the folders in the folder ;
+--- --m select "folder" -  enters the folder ;
+--- --m cd - go back ;
+--- --m music_list - prints a mp3 list ;
+--- --m create "playlist" - launches the method of creating an object (playlist) ;
