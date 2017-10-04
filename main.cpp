@@ -32,6 +32,7 @@ int main()
 			else if (comands[1] == "folder_list") folder_list(buffer);
 			else if (comands[1] == "cd") cd(buffer);
 			else if (comands[1] == "select") select(buffer, comands[2]);
+			else if (comands[1] == "help") help();
 		}
 
 	}

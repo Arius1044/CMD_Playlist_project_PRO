@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <string>
 #include <iostream>
+#include <fstream>
+
 
 using namespace std;
 
@@ -31,6 +33,7 @@ void music_list(char* buffer)
 		FindClose(hand);
 	}
 	delete[] c_buffer;
+	cout << endl;
 }
 
 void folder_list(char* buffer)
@@ -57,7 +60,11 @@ void folder_list(char* buffer)
 		FindClose(hand);
 	}
 	delete[] c_buffer;
+	cout << endl;
 }
+
+
+
 
 
 void cd(char* buffer)
@@ -87,6 +94,27 @@ void select(char* buffer, string folder)
 
 	c_buffer = c_buffer + "\\"+ folder;
 	SetCurrentDirectory(c_buffer.c_str());
+	cout << endl;
+}
 
+void help()
+{
+
+	ifstream f("help.txt");
+
+	int n = 0;
+	while (!f.eof()) {
+		string definition;
+		f >> definition;
+		cout << definition << " ";
+		if (definition == ";")
+		{
+			cout << "\n";
+		}
+		n++;
+	}
+
+	f.close();
+	cout << endl;
 }
 

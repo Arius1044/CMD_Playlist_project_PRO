@@ -1,0 +1,5 @@
+--- --m folder_list - displays the contents of the folders in the folder ;
+--- --m select "folder" -  enters the folder ;
+--- --m cd - go back ;
+--- --m music_list - prints a mp3 list ;
+--- --m create "playlist" - launches the method of creating an object (playlist) ;
