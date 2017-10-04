@@ -1,7 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
-#include "S_func.h";
+#include "S_func.h"
+#include <windows.h>
+#include <string>
 
 using namespace std;
 
@@ -27,3 +29,5 @@ string* devide(char* comand)
 	delete[] cst, baryer;
 	return lexems;
 }
+
+
