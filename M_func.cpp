@@ -59,6 +59,7 @@ void folder_list(char* buffer)
 	delete[] c_buffer;
 }
 
+
 void cd(char* buffer)
 {
 	int count = 0;
@@ -78,3 +79,4 @@ void cd(char* buffer)
 	SetCurrentDirectory(nbuffer.c_str());
 	cout << endl;
 }
+
