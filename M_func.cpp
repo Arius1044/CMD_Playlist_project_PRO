@@ -80,3 +80,13 @@ void cd(char* buffer)
 	cout << endl;
 }
 
+void select(char* buffer, string folder)
+{
+	string c_buffer;
+	c_buffer = buffer;
+
+	c_buffer = c_buffer + "\\"+ folder;
+	SetCurrentDirectory(c_buffer.c_str());
+
+}
+

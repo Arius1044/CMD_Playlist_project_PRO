@@ -31,6 +31,7 @@ int main()
 			if (comands[1] == "music_list") music_list(buffer);
 			else if (comands[1] == "folder_list") folder_list(buffer);
 			else if (comands[1] == "cd") cd(buffer);
+			else if (comands[1] == "select") select(buffer, comands[2]);
 		}
 
 	}
