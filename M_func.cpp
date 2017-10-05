@@ -6,12 +6,13 @@
 #include <iostream>
 #include <fstream>
 
-
 using namespace std;
 
-void music_list(char* buffer)
+string* music_list(char* buffer, unsigned int &count)
 {
 	cout << endl;
+	int i = 0;
+	string *paths = new string[3000];
 
 	WIN32_FIND_DATA File_Data;
 	HANDLE hand;
@@ -27,13 +28,21 @@ void music_list(char* buffer)
 		do
 		{
 		    cout << File_Data.cFileName << "\n";
+			string temp = File_Data.cFileName;
+			paths[i] += buffer;
+			paths[i] += "\\";
+			paths[i++] += temp;
+
 		} 
 		while (FindNextFile(hand, &File_Data) != 0);
 
 		FindClose(hand);
 	}
+
 	delete[] c_buffer;
 	cout << endl;
+	count = i;
+	return paths;
 }
 
 void folder_list(char* buffer)
@@ -63,11 +72,7 @@ void folder_list(char* buffer)
 	cout << endl;
 }
 
-
-
-
-
-void cd(char* buffer)
+void back(char* buffer)
 {
 	int count = 0;
 	string nbuffer;
@@ -117,4 +122,3 @@ void help()
 	f.close();
 	cout << endl;
 }
-

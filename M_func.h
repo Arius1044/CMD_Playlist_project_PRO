@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void music_list(char* buffer);
+string* music_list(char* buffer, unsigned int &count);
 void folder_list(char* buffer);
-void cd(char* buffer);
+void back(char* buffer);
 void select(char* buffer, string folder);
 void help();
