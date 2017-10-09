@@ -122,3 +122,44 @@ void help()
 	f.close();
 	cout << endl;
 }
+
+void playlist_list(char* buffer)
+{
+	cout << endl;
+	int i = 0;
+	string *paths = new string[3000];
+
+	WIN32_FIND_DATA File_Data;
+	HANDLE hand;
+
+	char* c_buffer = new char[100];
+	strcpy(c_buffer, buffer);
+	strcat(c_buffer, "\\*.m3u");
+
+
+	hand = FindFirstFile(c_buffer, &File_Data);
+	if (hand != INVALID_HANDLE_VALUE)
+	{
+		do
+		{
+			cout << File_Data.cFileName << "\n";
+
+		} while (FindNextFile(hand, &File_Data) != 0);
+
+		FindClose(hand);
+	}
+
+	delete[] c_buffer;
+	cout << endl;
+}
+
+string select_playlist(char* buffer, string playlist)
+{
+	string c_buffer;
+	c_buffer = buffer;
+
+	c_buffer = c_buffer + "\\" + playlist + ".m3u";
+	cout << endl;
+
+	return c_buffer;
+}

@@ -8,4 +8,6 @@ string* music_list(char* buffer, unsigned int &count);
 void folder_list(char* buffer);
 void back(char* buffer);
 void select(char* buffer, string folder);
+string select_playlist();
+void playlist_list(char* buffer);
 void help();
