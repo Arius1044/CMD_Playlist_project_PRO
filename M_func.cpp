@@ -8,7 +8,7 @@
 
 using namespace std;
 
-string* music_list(char* buffer, unsigned int &count)
+string* music_list(char* buffer, unsigned int &count, bool &flag)
 {
 	cout << endl;
 	int i = 0;
@@ -17,7 +17,7 @@ string* music_list(char* buffer, unsigned int &count)
 	WIN32_FIND_DATA File_Data;
 	HANDLE hand;
 
-	char* c_buffer = new char[100];
+	char* c_buffer = new char[1000];
 	strcpy(c_buffer, buffer);
 	strcat(c_buffer, "\\*.mp3");
 
@@ -32,7 +32,7 @@ string* music_list(char* buffer, unsigned int &count)
 			paths[i] += buffer;
 			paths[i] += "\\";
 			paths[i++] += temp;
-
+			flag = true;
 		} 
 		while (FindNextFile(hand, &File_Data) != 0);
 
@@ -92,7 +92,7 @@ void back(char* buffer)
 	cout << endl;
 }
 
-void select(char* buffer, string folder)
+void select_folder(char* buffer, string folder)
 {
 	string c_buffer;
 	c_buffer = buffer;
@@ -153,13 +153,71 @@ void playlist_list(char* buffer)
 	cout << endl;
 }
 
-string select_playlist(char* buffer, string playlist)
+string select_playlist(char* buffer, string playlist, bool &flag)
 {
+
+	WIN32_FIND_DATA File_Data;
+	HANDLE hand;
+
+	string c_playlist = "\\";
+	c_playlist += playlist + ".m3u";
+
+	char* buf = new char[1000];
+	char* cc_playlist = new char[100];
+
+	strcpy(buf, buffer);
+	strcpy(cc_playlist, c_playlist.c_str());
+	strcat(buf, cc_playlist);
+
+
+	hand = FindFirstFile(buf, &File_Data);
+	if (hand == INVALID_HANDLE_VALUE)
+	{
+		cout << "\n\nFile doesn't exist! \n\n";
+		FindClose(hand);
+		delete[] buf, cc_playlist;
+		return "0";
+	}
+
+	delete[] buf, cc_playlist;
+
 	string c_buffer;
 	c_buffer = buffer;
+	flag = true;
+	return c_buffer + c_playlist;
+}
 
-	c_buffer = c_buffer + "\\" + playlist + ".m3u";
-	cout << endl;
+string select_song(char* buffer, string song, bool &flag)
+{
+	WIN32_FIND_DATA File_Data;
+	HANDLE hand;
 
-	return c_buffer;
+	string c_song = "\\";
+	c_song += song + ".mp3";
+
+	char* buf = new char[1000];
+	char* cc_song = new char[100];
+
+	strcpy(buf, buffer);
+	strcpy(cc_song, c_song.c_str());
+	strcat(buf, cc_song);
+
+
+	hand = FindFirstFile(buf, &File_Data);
+	if (hand == INVALID_HANDLE_VALUE)
+	{
+		cout << "\n\nFile doesn't exist! \n\n";
+		FindClose(hand);
+		delete[] buf, cc_song;
+		return "0";
+	}
+
+	delete[] buf, cc_song;
+
+	string c_buffer;
+	c_buffer = buffer;
+	flag = true;
+	cout <<"\nSelected" << endl;
+
+	return c_buffer + c_song;
 }
