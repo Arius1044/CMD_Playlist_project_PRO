@@ -111,7 +111,45 @@ Playlist::Playlist(string path, string _name_)
 
 }
 
+void  Playlist:: operator+ ( const Playlist &Playlist2)
+{
+	for (int i = count_of_songs; i < count_of_songs + Playlist2.count_of_songs; i++)
+		Songs[i] = Playlist2.Songs[i - count_of_songs];
+	count_of_songs += Playlist2.count_of_songs;
+}
 
+void Playlist:: operator+ (string song)
+{
+	Songs[count_of_songs] = read_mp3(song);
+	count_of_songs++;
+}
+
+void  Playlist:: operator- (const Playlist Playlist2)
+{
+	for (int i = 0; i < Playlist2.count_of_songs; i++)
+		for (int j = 0; j < count_of_songs; j++)
+		{
+			if (!strcmp(Playlist2.Songs[i].artist, Songs[j].artist) && !strcmp(Playlist2.Songs[i].song, Songs[j].song))
+			{
+				for (int k = j; k < count_of_songs - 1; k++) swap(Songs[k], Songs[k + 1]); count_of_songs--;
+				
+			}
+		}
+}
+
+void  Playlist:: operator- (string song)
+{
+	MP3_INFO Song = read_mp3(song);
+	for (int j = 0; j < count_of_songs; j++)
+	{
+		if (!strcmp(Song.artist,Songs[j].artist) && !strcmp(Song.song,Songs[j].song))
+		{
+			for (int k = j; k < count_of_songs - 1; k++) swap(Songs[k], Songs[k + 1]); count_of_songs--;
+			break;
+
+		}
+	}
+}
 
 void Playlist::get_info()
 {
