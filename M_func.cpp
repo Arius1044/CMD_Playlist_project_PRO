@@ -174,6 +174,7 @@ string select_playlist(char* buffer, string playlist, bool &flag)
 	if (hand == INVALID_HANDLE_VALUE)
 	{
 		cout << "\n\nFile doesn't exist! \n\n";
+		cout << "\n_________________________________________________________\n\n";
 		FindClose(hand);
 		delete[] buf, cc_playlist;
 		return "0";
@@ -207,6 +208,7 @@ string select_song(char* buffer, string song, bool &flag)
 	if (hand == INVALID_HANDLE_VALUE)
 	{
 		cout << "\n\nFile doesn't exist! \n\n";
+		cout << "\n_________________________________________________________\n\n";
 		FindClose(hand);
 		delete[] buf, cc_song;
 		return "0";

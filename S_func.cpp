@@ -12,9 +12,6 @@ using namespace std;
 
 string* devide(char* comand, int &count)
 {
-
-	setlocale(LC_ALL, "ukr");
-
 	string* lexems = new string[20];
 	char *token;
 	char *cst = new char[1000];
