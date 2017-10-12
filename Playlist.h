@@ -14,7 +14,11 @@ public:
 	Playlist(string* songs, unsigned int count, string _name_);
 	Playlist(string _name_);
 	Playlist(string path ,string _name_);
-	void Save(string _path_);;
+	void Save(string _path_);
+	void operator+ (const Playlist &Playlist2);
+	void operator+ (string song);
+	void operator- (const Playlist Playlist2);
+	void operator- (string song);
 	void get_info();
 
 	string get_name();
